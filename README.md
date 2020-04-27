@@ -239,21 +239,9 @@ import com.panda.domain.User;
     ```
     
     其中，Criteria对象可使用的方法很多，基本可以满足常用的条件查询：
-    方法	说明
-example.setOrderByClause(“字段名 ASC”)	添加升序排列条件，DESC为降序
-example.setDistinct(false)	去除重复，boolean型，true为选择不重复的记录。
-criteria.andXxxIsNull	添加字段xxx为null的条件
-criteria.andXxxIsNotNull	添加字段xxx不为null的条件
-criteria.andXxxEqualTo(value)	添加xxx字段等于value条件
-criteria.andXxxNotEqualTo(value)	添加xxx字段不等于value条件
-criteria.andXxxGreaterThan(value)	添加xxx字段大于value条件
-criteria.andXxxGreaterThanOrEqualTo(value)	添加xxx字段大于等于value条件
-criteria.andXxxLessThan(value)	添加xxx字段小于value条件
-criteria.andXxxLessThanOrEqualTo(value)	添加xxx字段小于等于value条件
-criteria.andXxxIn(List<？>)	添加xxx字段值在List<？>条件
-criteria.andXxxNotIn(List<？>)	添加xxx字段值不在List<？>条件
-criteria.andXxxLike(“%”+value+”%”)	添加xxx字段值为value的模糊查询条件
-criteria.andXxxNotLike(“%”+value+”%”)	添加xxx字段值不为value的模糊查询条件
+    ![所有方法](https://images.cnblogs.com/cnblogs_com/LearnAndGet/1371984/o_200427012115method.png "all methods")
+    上面的方法基本从方法名就可以看出其作用，使用起来也比较方便。
+    
 
 ## 显示层
 
