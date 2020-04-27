@@ -118,14 +118,19 @@ public class User {
 5.  @GeneratedValue指定主键生成策略。
     
 
-## 通用mapper接口创建
+## Dao层
+Dao层使用通用Mapper接口，只需要让我们的接口实现Mapper<T>即可。
 
 **此处需注意导入的是tk.mybatis.mapper.common.Mapper而不是mybatis的Mapper**
 
 继承该Mapper后，会获取父接口的常用方法。
 
 ```java
-package com.panda.mapper;  import com.panda.domain.User;  import tk.mybatis.mapper.common.Mapper;  public interface UserDao extends Mapper {  }  
+package com.panda.mapper;  
+import com.panda.domain.User;  
+import tk.mybatis.mapper.common.Mapper;  
+public interface UserDao extends Mapper {  
+}  
 ```
 
 ## 业务层
@@ -133,11 +138,18 @@ package com.panda.mapper;  import com.panda.domain.User;  import tk.mybatis.mapp
 业务层接口：
 
 ```java
-package com.panda.mapper;
- import com.panda.domain.User;
- import tk.mybatis.mapper.common.Mapper;
- public interface UserDao extends Mapper<User> {
- }
+package com.panda.service;
+import com.panda.domain.User;
+import java.util.List;
+
+public interface UserService {
+    User selectOne(String id);
+    int addOne(User user);
+    int deleteOne(int id);
+    int updateOne(User user);
+    List<User> selectOneNameLike(String name);
+    List<User> selectAll();
+}
 ```
 
 业务层实现：
@@ -227,7 +239,21 @@ import com.panda.domain.User;
     ```
     
     其中，Criteria对象可使用的方法很多，基本可以满足常用的条件查询：
-    
+    方法	说明
+example.setOrderByClause(“字段名 ASC”)	添加升序排列条件，DESC为降序
+example.setDistinct(false)	去除重复，boolean型，true为选择不重复的记录。
+criteria.andXxxIsNull	添加字段xxx为null的条件
+criteria.andXxxIsNotNull	添加字段xxx不为null的条件
+criteria.andXxxEqualTo(value)	添加xxx字段等于value条件
+criteria.andXxxNotEqualTo(value)	添加xxx字段不等于value条件
+criteria.andXxxGreaterThan(value)	添加xxx字段大于value条件
+criteria.andXxxGreaterThanOrEqualTo(value)	添加xxx字段大于等于value条件
+criteria.andXxxLessThan(value)	添加xxx字段小于value条件
+criteria.andXxxLessThanOrEqualTo(value)	添加xxx字段小于等于value条件
+criteria.andXxxIn(List<？>)	添加xxx字段值在List<？>条件
+criteria.andXxxNotIn(List<？>)	添加xxx字段值不在List<？>条件
+criteria.andXxxLike(“%”+value+”%”)	添加xxx字段值为value的模糊查询条件
+criteria.andXxxNotLike(“%”+value+”%”)	添加xxx字段值不为value的模糊查询条件
 
 ## 显示层
 
