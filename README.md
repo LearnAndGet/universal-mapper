@@ -187,7 +187,7 @@ import com.panda.domain.User;
 
 -   基本增删改查
     
-    1.  查询t
+    1.  查询
         
         select(T t) :根据传入对象属性查询，返回实体类元素集合。
         
@@ -293,11 +293,12 @@ public class UserController {
 
 ## 测试
 
-1.  测试查询  
-    浏览器输入：[http://localhost:8080/selectOne?id=1](http://localhost:8080/selectOne?id=1)
-2.  测试删除
-3.  测试插入
-4.  测试更新
+1.  测试插入  
+    浏览器输入：[http://localhost:8080/addOne],可以看到数据库成功插入一个，当然正常情况应该是前端请求的     时候传入一个json对象给我们来插入数据      库，这里偷懒使用了自己创建的User对象，不过无伤大雅。
+2.  测试更新
+    浏览器输入：[http://localhost:8080/updateOne],通用使用我们自己创建User对象来更新数据库记录。
+3.  测试查询：[http://localhost:8080/selectOne?id=1]，成功查询到id=1的用户
+4.  测试删除：[http://localhost:8080/deleteOne?id=1]，成功删除id=1的用户
 
 # 通用Mapper的原理简介
 
